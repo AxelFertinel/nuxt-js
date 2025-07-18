@@ -3,8 +3,14 @@
         <h1>Contact</h1>
     </div>
 </template>
-<!-- <script setup>
+<script setup>
 definePageMeta({
     middleware: "log",
 });
-</script> -->
+
+import { useHead } from "#app";
+useHead({
+    title: "Contact",
+    meta: [{ name: "description" }],
+});
+</script>
