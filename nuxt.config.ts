@@ -5,4 +5,10 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     css: ["~/assets/css/main.css"],
     vite: { plugins: [tailwindcss()] },
+    runtimeConfig: {
+        apiSecret: "123",
+        public: {
+            apirUrl: process.env.API_URL as string,
+        },
+    },
 });
