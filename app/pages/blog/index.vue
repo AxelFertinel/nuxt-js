@@ -8,11 +8,14 @@
             <li v-for="todo in todos" :key="todo.id">{{ todo.title }}</li>
         </ul>-->
         <button
-            @click="addTodo"
+            @click="startStream"
             class="bg-green-600 hover:bg-green-400 cursor-pointer p-2 rounded text-white"
         >
             Ajouter une task
         </button>
+        <!-- <ul>
+            <li v-for="(msg, index) in messages" :key="index">{{ msg }}</li>
+        </ul> -->
     </div>
 </template>
 
@@ -52,6 +55,23 @@ async function addTodo() {
 //     },
 // });
 // console.log("⛰ data:", data);
+
+//const messages = ref<string[]>([]);
+// ...existing code...
+
+async function startStream() {
+    const res = await $fetch("/api/sse", {
+        method: "POST",
+        responseType: "stream",
+    });
+    const reader = res.pipeThrough(new TextDecoderStream()).getReader();
+
+    while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        messages.value.push(value.trim());
+    }
+}
 </script>
 
 <style lang="scss" scoped></style>
