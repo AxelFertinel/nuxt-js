@@ -44,6 +44,14 @@ async function addTodo() {
     });
     console.log(res);
 }
+
+// import superjson from "superjson";
+// const { data } = await useFetch("/api/superjson", {
+//     transform: (value) => {
+//         return superjson.parse(value);
+//     },
+// });
+// console.log("⛰ data:", data);
 </script>
 
 <style lang="scss" scoped></style>
