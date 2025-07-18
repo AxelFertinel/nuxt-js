@@ -8,9 +8,18 @@ definePageMeta({
     middleware: "log",
 });
 
-import { useHead } from "#app";
+import { useHead, useSeoMeta } from "#app";
 useHead({
     title: "Contact",
     meta: [{ name: "description" }],
 });
+
+useSeoMeta({
+    title: "Contact",
+    ogTitle: "Ogtitle",
+    description: "test",
+    ogDescription: "test",
+    ogImage:"/test.png",
+    twitterCard: "summary_large_image"
+})
 </script>
