@@ -10,11 +10,6 @@ useHead({
     title: "About",
     titleTemplate: (title) => `${title} test`,
 });
-
-const config = useRuntimeConfig();
-
-const apiUrl = config.public.apirUrl;
-console.log("😙 apiUrl:", apiUrl);
 </script>
 
 <style lang="scss" scoped></style>
