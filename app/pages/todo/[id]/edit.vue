@@ -1,6 +1,6 @@
 <template>
-    <div class="p-6 max-w-xl mx-auto">
-        <h1 class="text-2xl font-bold">Edition de la tâche</h1>
+    <div class="container">
+        <h1>Edition de la tâche</h1>
         <form action="space-y-4" @submit.prevent="updateTodo">
             <label for="">Titre</label>
             <input
@@ -12,10 +12,7 @@
                 <input type="checkbox" id="completed" v-model="completed" />
                 Tâche terminé
             </label>
-            <button
-                type="submit"
-                class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded cursor-pointer"
-            >
+            <button type="submit" class="bg-green-500 hover:bg-green-600 btn">
                 Modifier
             </button>
         </form>
@@ -27,9 +24,7 @@ import type { Task } from "~/types/task";
 const route = useRoute();
 const id = Number(route.params.id);
 const title = ref("");
-console.log("🎙 title:", title.value);
 const completed = ref(false);
-console.log("🇰🇾 completed:", completed.value);
 
 const fetchTodos = async () => {
     const data = await $fetch<Task>(`/api/task/${id}`);
@@ -45,7 +40,7 @@ const updateTodo = async () => {
             completed: completed.value,
         },
     });
-    await navigateTo("/");
+    await navigateTo("/taches");
 };
 
 onMounted(fetchTodos);

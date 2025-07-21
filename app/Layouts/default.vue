@@ -2,9 +2,10 @@
     <div>
         <Nav />
         <slot />
-        <Footer />
     </div>
 </template>
 <script setup>
+import Nav from "~/components/Nav.vue";
+
 // import "~/../assets/css/main.css";
 </script>

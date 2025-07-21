@@ -1,6 +1,6 @@
 <template>
-    <div class="p-6 max-w-xl mx-auto">
-        <h1 class="text-2xl font-bold">Crée une tâche</h1>
+    <div class="container">
+        <h1>Crée une tâche</h1>
         <form class="space-y-4" @submit.prevent="createTodo">
             <label>Titre</label>
             <input
@@ -22,7 +22,6 @@
 const title = ref("");
 
 const createTodo = async () => {
-    console.log("◾ title:", title.value);
     await $fetch("/api/task", {
         method: "POST",
         body: {
@@ -32,5 +31,3 @@ const createTodo = async () => {
     await navigateTo("/");
 };
 </script>
-
-<style lang="scss" scoped></style>

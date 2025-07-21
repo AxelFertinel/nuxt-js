@@ -13,13 +13,22 @@ export default defineNuxtConfig({
             },
         },
     },
-
+    modules: ["@prisma/nuxt", "shadcn-nuxt"],
+    shadcn: {
+        /**
+         * Prefix for all the imported component
+         */
+        prefix: "",
+        /**
+         * Directory that the component lives in.
+         * @default "./app/components/ui"
+         */
+        componentDir: "./app/components/ui",
+    },
     runtimeConfig: {
         apiSecret: "123",
         public: {
             apirUrl: process.env.API_URL as string,
         },
     },
-
-    modules: ["@prisma/nuxt"],
 });
