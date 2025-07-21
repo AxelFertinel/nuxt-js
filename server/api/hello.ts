@@ -1,3 +1,3 @@
-export default defineEventHandler((event) => {
-    return { message: "Hello test" };
-});
+// export default defineEventHandler((event) => {
+//     return { message: "Hello test" };
+// });

@@ -7,12 +7,12 @@
         <!-- <ul>
             <li v-for="todo in todos" :key="todo.id">{{ todo.title }}</li>
         </ul>-->
-        <button
+        <!-- <button
             @click="startStream"
             class="bg-green-600 hover:bg-green-400 cursor-pointer p-2 rounded text-white"
         >
             Ajouter une task
-        </button>
+        </button> -->
         <!-- <ul>
             <li v-for="(msg, index) in messages" :key="index">{{ msg }}</li>
         </ul> -->
@@ -20,8 +20,8 @@
 </template>
 
 <script setup>
-const config = useRuntimeConfig();
-const apiUrl = config.public.apirUrl;
+// const config = useRuntimeConfig();
+// const apiUrl = config.public.apirUrl;
 //const posts = await $fetch(apiUrl);
 
 // const { data: posts } = useFetch(`${apiUrl}/posts`);
@@ -38,15 +38,15 @@ const apiUrl = config.public.apirUrl;
 //     });
 //     console.log(newTodo);
 // }
-async function addTodo() {
-    const res = await $fetch(`/api/welcome`, {
-        method: "POST",
-        body: {
-            name: "Axel",
-        },
-    });
-    console.log(res);
-}
+// async function addTodo() {
+//     const res = await $fetch(`/api/welcome`, {
+//         method: "POST",
+//         body: {
+//             name: "Axel",
+//         },
+//     });
+//     console.log(res);
+// }
 
 // import superjson from "superjson";
 // const { data } = await useFetch("/api/superjson", {
@@ -59,19 +59,19 @@ async function addTodo() {
 //const messages = ref<string[]>([]);
 // ...existing code...
 
-async function startStream() {
-    const res = await $fetch("/api/sse", {
-        method: "POST",
-        responseType: "stream",
-    });
-    const reader = res.pipeThrough(new TextDecoderStream()).getReader();
+// async function startStream() {
+//     const res = await $fetch("/api/sse", {
+//         method: "POST",
+//         responseType: "stream",
+//     });
+//     const reader = res.pipeThrough(new TextDecoderStream()).getReader();
 
-    while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        messages.value.push(value.trim());
-    }
-}
+//     while (true) {
+//         const { value, done } = await reader.read();
+//         if (done) break;
+//         messages.value.push(value.trim());
+//     }
+// }
 </script>
 
 <style lang="scss" scoped></style>

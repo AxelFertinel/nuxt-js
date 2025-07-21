@@ -4,11 +4,22 @@ export default defineNuxtConfig({
     compatibilityDate: "2025-07-15",
     devtools: { enabled: true },
     css: ["~/assets/css/main.css"],
-    vite: { plugins: [tailwindcss()] },
+    vite: {
+        plugins: [tailwindcss()],
+        resolve: {
+            alias: {
+                ".prisma/client/index-browser":
+                    "./node_modules/.prisma/client/index-browser.js",
+            },
+        },
+    },
+
     runtimeConfig: {
         apiSecret: "123",
         public: {
             apirUrl: process.env.API_URL as string,
         },
     },
+
+    modules: ["@prisma/nuxt"],
 });
